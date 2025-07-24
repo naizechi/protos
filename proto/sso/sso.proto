@@ -4,35 +4,56 @@ package auth;
 
 option go_package = "zuev.sso.v1;ssov1";
 
+import "google/api/annotations.proto";
+
 service Auth {
-  rpc Register (RegisterRequest) returns (RegisterResponse);
-  rpc Login (LoginRequest) returns (LoginResponse);
-  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+  // Регистрация нового пользователя
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post: "/v1/register"
+      body: "*"
+    };
+  }
+
+  // Вход пользователя (логин)
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/v1/login"
+      body: "*"
+    };
+  }
+
+  // Проверка, является ли пользователь администратором
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse) {
+    option (google.api.http) = {
+      get: "/v1/admin/{user_id}"
+    };
+  }
 }
 
 message RegisterRequest {
-  string email = 1;
-  string password = 2;
+  string email = 1;       // email пользователя
+  string password = 2;    // пароль пользователя
 }
 
 message RegisterResponse {
-  int64 user_id = 1;
+  int64 user_id = 1;      // ID зарегистрированного пользователя
 }
 
 message LoginRequest {
-  string email = 1;
-  string password = 2;
-  int32 app_id = 3;
+  string email = 1;       // email пользователя
+  string password = 2;    // пароль пользователя
+  int32 app_id = 3;       // ID приложения (если нужно)
 }
 
-message LoginResponse{
-  string token = 1;
+message LoginResponse {
+  string token = 1;       // JWT или другой токен аутентификации
 }
 
 message IsAdminRequest {
-  int64 user_id = 1;
+  int64 user_id = 1;      // ID пользователя для проверки
 }
 
 message IsAdminResponse {
-  bool is_admin = 1;
+  bool is_admin = 1;      // true, если пользователь админ
 }
