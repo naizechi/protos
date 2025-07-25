@@ -333,7 +333,7 @@ const file_proto_sso_sso_proto_rawDesc = "" +
 	"\x04Auth\x12R\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/register\x12F\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/login\x12S\n" +
-	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/admin/{user_id}B\x13Z\x11zuev.sso.v1;ssov1b\x06proto3"
+	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/admin/{user_id}B3Z1github.com/naizechi/protos/gen/go/proto/sso;ssov1b\x06proto3"
 
 var (
 	file_proto_sso_sso_proto_rawDescOnce sync.Once
