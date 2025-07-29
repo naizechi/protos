@@ -10,13 +10,7 @@ import "google/type/date.proto";
 import "google/protobuf/field_mask.proto";
 
 message CreateUserProfileRequest {
-  FullName name = 1;
-  Gender gender = 2;
-  string photo_url = 3;
-  ContactInfo contact = 4;
-  AddressInfo address = 5;
-  IdentityDocument identity_doc = 6;
-  google.type.Date birth_date = 7;
+ UserProfile user_profile = 1;
 }
 
 message CreateUserProfileResponse {

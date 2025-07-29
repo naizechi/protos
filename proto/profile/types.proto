@@ -15,6 +15,8 @@ message UserProfile {
   AddressInfo address = 5;
   IdentityDocument identity_doc = 6;
   google.type.Date birth_date = 7;
+  string snils = 8;
+  string inn_fl = 9;
 }
 
 message FullName {
