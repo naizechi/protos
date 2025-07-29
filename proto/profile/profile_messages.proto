@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package profile;
+
+option go_package = "github.com/naizechi/protos/gen/go/proto/profile;ssov1";
+
+import "proto/profile/types.proto";
+import "proto/profile/enums.proto";
+import "google/type/date.proto";
+import "google/protobuf/field_mask.proto";
+
+message CreateUserProfileRequest {
+  FullName name = 1;
+  Gender gender = 2;
+  string photo_url = 3;
+  ContactInfo contact = 4;
+  AddressInfo address = 5;
+  IdentityDocument identity_doc = 6;
+  google.type.Date birth_date = 7;
+}
+
+message CreateUserProfileResponse {
+  int64 user_profile_id = 1;
+}
+
+message UpdateUserProfileRequest {
+  UserProfile user_profile = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateUserProfileResponse {
+  UserProfile user_profile = 1;
+}
+
+message GetUserProfileResponse {
+  UserProfile user_profile = 1;
+}

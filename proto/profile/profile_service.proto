@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package profile;
+
+option go_package = "github.com/naizechi/protos/gen/go/proto/profile;ssov1";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "proto/profile/profile_messages.proto";
+
+service Profile {
+
+  // --- USER PROFILE ---
+
+  rpc CreateUserProfile(CreateUserProfileRequest) returns (CreateUserProfileResponse) {
+    option (google.api.http) = {
+      post: "/v1/profile"
+      body: "*"
+    };
+  }
+
+  rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse) {
+    option (google.api.http) = {
+      patch: "/v1/profile"
+      body: "*"
+    };
+  }
+
+  rpc GetUserProfile(google.protobuf.Empty) returns (GetUserProfileResponse) {
+    option (google.api.http) = {
+      get: "/v1/profile"
+    };
+  }
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+import "proto/profile/enums.proto";
+import "google/type/date.proto";
+
+option go_package = "github.com/naizechi/protos/gen/go/proto/profile;ssov1";
+
+package profile;
+
+message UserProfile {
+  FullName name = 1;
+  Gender gender = 2;
+  string photo_url = 3;
+  ContactInfo contact = 4;
+  AddressInfo address = 5;
+  IdentityDocument identity_doc = 6;
+  google.type.Date birth_date = 7;
+}
+
+message FullName {
+  string name = 1;
+  string patronymic = 2;
+  string surname = 3;
+}
+
+message ContactInfo {
+  string phone_number = 1;
+  string email = 2;
+}
+
+message AddressInfo {
+  string citizenship_code = 1;
+  string residence_address = 2;
+  string live_address = 3;
+}
+
+message IdentityDocument {
+  DocType type = 1;
+  string series = 2;
+  string number = 3;
+  google.type.Date issue_date = 4;
+  string issue_by = 5;
+  string department_code = 6;
+}
