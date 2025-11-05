@@ -29,6 +29,13 @@ service Auth {
       get: "/v1/admin/{user_id}"
     };
   }
+
+  rpc Refresh(RefreshRequest) returns (RefreshResponse) {
+    option (google.api.http) = {
+      post: "v1/refresh"
+      body: "*"
+    };
+  }
 }
 
 message RegisterRequest {
@@ -56,4 +63,13 @@ message IsAdminRequest {
 
 message IsAdminResponse {
   bool is_admin = 1;      // true, если пользователь админ
+}
+
+message RefreshRequest{
+  string refresh_token = 1;
+  int32 app_id = 2;
+}
+
+message RefreshResponse{
+  string access_token = 1;
 }
