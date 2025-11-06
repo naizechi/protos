@@ -66,8 +66,7 @@ message IsAdminResponse {
 }
 
 message RefreshRequest{
-  string refresh_token = 1;
-  int32 app_id = 2;
+  int32 app_id = 1;
 }
 
 message RefreshResponse{
