@@ -32,7 +32,7 @@ service Auth {
 
   rpc Refresh(RefreshRequest) returns (RefreshResponse) {
     option (google.api.http) = {
-      post: "v1/refresh"
+      post: "/v1/refresh"
       body: "*"
     };
   }
