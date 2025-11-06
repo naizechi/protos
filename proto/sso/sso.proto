@@ -54,7 +54,8 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string token = 1;       // JWT или другой токен аутентификации
+  string access_token = 1;   // JWT access token
+  string refresh_token = 2;  // JWT refresh token
 }
 
 message IsAdminRequest {
