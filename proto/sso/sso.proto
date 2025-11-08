@@ -30,46 +30,63 @@ service Auth {
     };
   }
 
+  // Рефреш токена
   rpc Refresh(RefreshRequest) returns (RefreshResponse) {
     option (google.api.http) = {
       post: "/v1/refresh"
       body: "*"
     };
   }
+
+  // Разлогин с одного приложения
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      post: "/v1/logout"
+      body: "*"
+    };
+  }
 }
 
 message RegisterRequest {
-  string email = 1;       // email пользователя
-  string password = 2;    // пароль пользователя
+  string email = 1;
+  string password = 2;
 }
 
 message RegisterResponse {
-  int64 user_id = 1;      // ID зарегистрированного пользователя
+  int64 user_id = 1;
 }
 
 message LoginRequest {
-  string email = 1;       // email пользователя
-  string password = 2;    // пароль пользователя
-  int32 app_id = 3;       // ID приложения (если нужно)
+  string email = 1;
+  string password = 2;
+  int32 app_id = 3;
 }
 
 message LoginResponse {
-  string access_token = 1;   // JWT access token
-  string refresh_token = 2;  // JWT refresh token
+  string access_token = 1;
+  string refresh_token = 2;
 }
 
 message IsAdminRequest {
-  int64 user_id = 1;      // ID пользователя для проверки
+  int64 user_id = 1;
 }
 
 message IsAdminResponse {
-  bool is_admin = 1;      // true, если пользователь админ
+  bool is_admin = 1;
 }
 
-message RefreshRequest{
+message RefreshRequest {
   int32 app_id = 1;
 }
 
-message RefreshResponse{
+message RefreshResponse {
   string access_token = 1;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message LogoutResponse {
+  string message = 1;
 }
